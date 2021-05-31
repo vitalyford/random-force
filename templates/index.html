@@ -13,13 +13,18 @@
 <body>
     <div class="container-fluid">
         <div class="row">
+            {% if context.remote_addr %}
+            <div class="col-12 m-auto mt-5 text-center">
+                <p class="lead text-primary">Your IP: {{ context.remote_addr }}</p>
+            </div>
+            {% endif %}
             <div class="col-md-6 col-sm-12 m-auto mt-5">
                 {% if context.flag %}
                 <p class="lead">Flag:<br>{{ context.flag|safe }}</p>
                 {% else %}
                 <form method="POST" action="/">
                     <div class="form-group text-center">
-                        <label for="guessed-number" class="lead mt-3">Guess a number</label>
+                        <label for="guessed-number" class="lead mt-3 text-secondary">Guess a number</label>
                         <input type="text" class="form-control mt-3 text-center" id="guessed-number" name="guessed-number" placeholder="Enter your number"{% if context.client_number %} value="{{ context.client_number }}"{% endif %}>
                     </div>
                     <div class="text-center">
@@ -29,8 +34,8 @@
                 {% endif %}
             </div>
             <div class="col-md-6 col-sm-12 m-auto mt-5 text-center">
-                <h1 class="lead mt-3">Server's number</h1>
-                <h1 class="lead">{% if context.server_number %}{{ context.server_number }}{% else %}None{% endif %}</h1>
+                <h1 class="lead mt-3 text-secondary">Server's number</h1>
+                <h1 class="lead mt-4">{% if context.server_number %}{{ context.server_number }}{% else %}None{% endif %}</h1>
             </div>
         </div>
     </div>
