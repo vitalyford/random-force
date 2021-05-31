@@ -6,7 +6,8 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-
+# port 6379 is only open for the app
+# please no brute-forcing or scanning, it won't work
 clients = redis.StrictRedis(host='redis', port=6379)
 
 
