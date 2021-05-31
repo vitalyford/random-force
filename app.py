@@ -28,7 +28,7 @@ def home():
 
         random.set_state(pickle.loads(clients.get(request.remote_addr)))
 
-        server_number = str(random.randint(0, 100))
+        server_number = str(random.randint(0, 1000000))
         clients.set(request.remote_addr, pickle.dumps(random.get_state()))
 
         client_number = request.form['guessed-number']
